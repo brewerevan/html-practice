@@ -8,7 +8,7 @@
 }
 
 .wrapper{
-    max-width: 45rem;
+    max-width: 50rem;
     margin: auto; 
 }
 
@@ -24,6 +24,7 @@ p{
 
 p:hover{
     cursor:pointer;
+    text-decoration: underline;
 }
 
 .login-signup-container{
@@ -51,10 +52,6 @@ h1{
     font-weight: 600;
 }
 
-.login-switch, .signup-switch{
-    width: 50%;
-}
-
 img{
     max-width: 100%;
     display: block;
@@ -71,12 +68,12 @@ img{
 .login-input-container, .signup-input-container{
     display: flex;
     flex-direction: column;
-    row-gap: 3rem;
-    margin: auto;
+    row-gap: 4rem;
+    justify-content: space-around;
 }
 
 input, button{
-    width: 25rem;
+    width: 80%;
 }
 
 input{
@@ -96,7 +93,8 @@ button{
     padding: 1rem;
     border: none;
     border-radius: .5rem;
-    margin: auto;
+    margin: auto auto 1.5rem auto;
+    height: 5rem;
 }
 
 button:hover{
@@ -130,6 +128,5 @@ label{
 .input-container{
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    margin: auto;
+    align-items: center;
 }
