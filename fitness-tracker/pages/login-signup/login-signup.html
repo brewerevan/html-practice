@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Fitness Tracker - Login/Signup</title>
+        <link rel="stylesheet" href="./login-signup.css">
+        <link rel="stylesheet" href="../../resources/main.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $("#signup-switch").click(hideSignup);
+
+                $("#signup-switch").keypress(function(e){
+                    if(e.key == "Enter"){
+                        hideSignup();
+                    }
+                });
+
+                $("#login-switch").click(hideLogin);
+
+                $("#login-switch").keypress(function(e){
+                    if(e.key == "Enter"){
+                        hideLogin();
+                    }
+                });
+
+                $(".login-input").on("input", validateLogin);
+                $(".signup-input").on("input",validateSignup);
+
+
+                function hideLogin(){
+                    $(".login-txt").hide();
+                    $(".signup-txt").show();
+                    $(".login-form").hide();
+                    $(".signup-form").show();
+                    $("#login-switch").addClass("hidden");
+                    $("#signup-switch").removeClass("hidden");
+                    reset();
+                }
+
+                function hideSignup(){
+                    $(".signup-txt").hide();
+                    $(".login-txt").show();
+                    $(".signup-form").hide();
+                    $(".login-form").show();
+                    $("#signup-switch").addClass("hidden");
+                    $("#login-switch").removeClass("hidden");
+                    reset();
+                }
+
+                function reset(){
+                    $("input").val("");
+                    $('[tabindex]:not([tabindex="-1"]), a, button, input, textarea, select')
+                    .filter(':visible:first')
+                    .focus();
+                    $("#login-btn").prop("disabled", true);
+                    $("#signup-btn").prop("disabled", true);
+                }
+
+                function validateLogin(){
+                    if($("#login-email").val() !== "" && $("#login-password").val() !== ""){
+                        $("#login-btn").prop("disabled", false);
+                    } else {
+                        $("#login-btn").prop("disabled", true);
+                    }
+                }
+
+                function validateSignup(){
+                    if($("#signup-email").val() !== "" && $("#signup-password").val() !== "" && $("#signup-password-confirm").val() !== ""){
+                        $("#signup-btn").prop("disabled", false);
+                    } else {
+                        $("#signup-btn").prop("disabled", true);
+                    }
+                }
+            });
+        </script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="login-signup-container">
+                    <div class="login-txt">
+                        <h1>Login</h1>
+                    </div>
+                    
+                    <div class="signup-txt">
+                        <h1>Signup</h1>
+                    </div>
+
+                    <div class="logo-flex-box">
+                        <div class="logo-container">
+                            <img src="../../resources/fitness-tracker-logo.png">
+                        </div>
+                    </div>
+                    
+                    <form class="login-form">
+                        <div class="login-input-container">
+                            <div class="input-container">
+                                <input class="login-input" id="login-email" name="email" type="email" placeholder="Email">
+                            </div>
+                            <div class="input-container">
+                                <input class="login-input" id="login-password" name="password" type="password" placeholder="Password">
+                            </div>
+                            <button id="login-btn" type="submit" disabled>Login</button>
+                        </div>
+                    </form>
+
+                    <form class="signup-form hidden">
+                        <div class="signup-input-container">
+                            <div class="input-container">
+                                <input class="signup-input" id="signup-email" name="email" type="email" required placeholder="Email">
+                            </div>
+                            <div class="input-container">
+                                <input class="signup-input" id="signup-password" name="password" type="password" required placeholder="Password">
+                            </div>
+                            <div class="input-container">
+                                <input class="signup-input" id="signup-password-confirm" name="password" type="password" required placeholder="Confirm Password">
+                            </div>
+                            <button id="signup-btn" type="submit" disabled>Signup</button>
+                        </div>
+                    </form>
+                    
+
+                    <span id="login-switch" class="switch">
+                        <p tabindex="0">Not a member? Click to Signup!</p>
+                    </span>
+
+                    <span id="signup-switch" class="switch hidden">
+                        <p tabindex="0">Already a member? Click to Login!</p>
+                    </span>
+            </div>
+        </div>
+    </body>
+</html>
